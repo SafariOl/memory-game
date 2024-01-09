@@ -1,0 +1,246 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #b0e3f4;
+    font-family: "cooper-black-std", serif;
+}
+
+button, a{
+    outline: none;
+    text-decoration: none;
+}
+
+.container{
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.cards{
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    width: 50vw;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 20.6%;
+    height: 17vh;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    border: 1px solid #000;
+    box-shadow: 5px 5px 5px #000;
+    transform: rotateY(-180deg);
+    transition: all .5s ease;
+    position: relative; 
+}
+
+.cover{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 111;
+    border-radius: 10px;
+}
+
+.card-image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+}
+
+.first .card.active{
+    background-color: #edede8;
+}
+
+.second .card.active{
+    background-color: #480c4f;
+}
+
+.third .card.active{
+    background-color: #132143;
+}
+
+.card.active{
+    transform: rotateY(0);
+    transition: all .5s ease;
+    background-image: none;
+}
+
+.card.active .cover{
+    display: none;
+}
+
+.card.active img{
+    opacity: 1;
+    transition: all .5s ease;
+}
+
+.bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 111;
+}
+
+.play{
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    width: 220px;
+    padding: 8px 0;
+    font-size: 30px;
+    margin-top: 50px;
+    background-color: #0a336f;
+    color: #fff;
+    border-radius: 10px;
+    font-family: "cooper-black-std", serif;
+    transition: all .2s ease;
+}
+
+.play:hover, .levels a:hover{
+    background-color: #689ab1;
+}
+
+.play:active, .levels a:active{
+    background: #3e4f69;
+}
+
+.restart{
+    display: none;
+}
+
+.score{
+    height: 50px;
+    font-size: 3rem;
+    color: #ffd900;
+    font-weight: 700;
+}
+
+.time{
+    margin-top: 10px;
+    position: relative;
+    width: 50vw;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.timeline{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00b7f4;
+    transition: width .4s ease;
+}
+
+.levels{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.levels a{
+    width: 20vw;
+    height: 15vh;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    text-decoration: none;
+    background-color: #0073ff;
+    border-radius: 10px;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 5px #000;
+    color: #fff;
+    position: relative;
+    transition: all .2s ease;
+}
+
+.levels .blocked{
+    position: relative;
+}
+
+.levels .blocked::before{
+    content: '';
+    inset: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+.back{
+    place-self: start;
+    position: absolute;
+}
+
+.back img{
+    width: 60px;
+}
+
+.continue{
+    display: none;
+    text-align: center;
+}
+
+.blocked{
+    position: relative;
+}
+
+.blocked img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    object-fit: cover;
+}
+
+@media (max-width: 1100px){
+    .cards{
+        width: 80vw;
+    }
+}
+
+@media (max-width: 800px){
+    .card{
+        height: 13vh;
+    }
+}
+
+@media (max-width: 540px){
+    .card{
+        height: 10vh;
+    }
+    .cards{
+        gap: 12px;
+    }
+    h1{
+        margin-top: 40px;
+        font-size: 34px;
+    }
+    .back img {
+        width: 40px;
+    }
+    .levels a{
+        width: 26vw;
+        height: 12vh;
+    }
+}
